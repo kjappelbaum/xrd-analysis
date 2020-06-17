@@ -7,8 +7,10 @@ test('fromBRML', async () => {
   let brml = readFileSync(join(__dirname, '../../../testFiles/test.brml'));
   let analysis = await fromBRML(brml);
 
-  expect(analysis.get().x).toHaveLength(2443);
-  expect(analysis.get().y).toHaveLength(2443);
-  expect(analysis.get().xLabel).toStrictEqual('TwoTheta / Degree [°]');
-  expect(analysis.get().yLabel).toStrictEqual('counts');
+  let spectrum = analysis.getSpectrum();
+
+  expect(spectrum.x).toHaveLength(2443);
+  expect(spectrum.y).toHaveLength(2443);
+  expect(spectrum.xLabel).toStrictEqual('2ϴ [°]');
+  expect(spectrum.yLabel).toStrictEqual('counts');
 });

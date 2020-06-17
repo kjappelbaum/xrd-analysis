@@ -1,15 +1,10 @@
-import { CommonSpectrum } from 'common-spectrum';
-
-export const {
+export {
   Analysis,
   AnalysesManager,
   fromJcamp,
   toJcamp,
   getJSGraph,
   getNormalizationAnnotations,
-} = CommonSpectrum({
-  dataType: 'XRD pattern',
-  defaultFlavor: undefined,
-});
+} from 'common-spectrum';
 
 export { fromBRML } from './from/fromBRML';
