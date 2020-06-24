@@ -25,6 +25,7 @@ export async function fromBRML(blob) {
   analysis.pushSpectrum(variables, {
     title: parsed.info.title,
     meta: parsed.meta,
+    dataType: 'XRD pattern',
   });
   return analysis;
 }
