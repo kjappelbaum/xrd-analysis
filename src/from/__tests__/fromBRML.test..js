@@ -9,8 +9,10 @@ test('fromBRML', async () => {
 
   let spectrum = analysis.getSpectrum();
 
-  expect(spectrum.x).toHaveLength(2443);
-  expect(spectrum.y).toHaveLength(2443);
-  expect(spectrum.xLabel).toStrictEqual('2ϴ [°]');
-  expect(spectrum.yLabel).toStrictEqual('counts');
+  expect(spectrum.variables.x.data).toHaveLength(2443);
+  expect(spectrum.variables.y.data).toHaveLength(2443);
+  expect(spectrum.variables.x.label).toStrictEqual('2ϴ [°]');
+  expect(spectrum.variables.x.units).toStrictEqual('°');
+  expect(spectrum.variables.y.label).toStrictEqual('counts');
+  expect(spectrum.variables.y.units).toStrictEqual('counts');
 });

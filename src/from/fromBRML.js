@@ -11,10 +11,18 @@ export async function fromBRML(blob) {
   let parsed = await readBRML(blob);
   let analysis = new Analysis();
 
-  analysis.pushSpectrum(parsed.data, {
-    dataType: parsed.info.dataType,
-    xLabel: parsed.info.xUnits,
-    yLabel: parsed.info.yUnits,
+  const variables = {
+    x: {
+      data: parsed.data.x,
+      label: parsed.info.xUnits,
+    },
+    y: {
+      data: parsed.data.y,
+      label: parsed.info.yUnits,
+    },
+  };
+
+  analysis.pushSpectrum(variables, {
     title: parsed.info.title,
     meta: parsed.meta,
   });
