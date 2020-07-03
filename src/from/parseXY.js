@@ -1,18 +1,13 @@
-function trimReplace(s) {
-  let tmp = s.split(':');
-  return tmp[1].replace('"', '').replace("'", '').trim();
-}
-
 /**
  * Parse diffractograms saved in xy files that are generated with PowDLL
  * @export
- * @param {String} file
+ * @param {String} [text] Text containing the data
  * @returns {Object} containing data (x: 2theta, y: counts), info and metadata
  */
-export function parseXY(file) {
-  let lines = file.split('\n').filter((line) => !line.match(/^\s*$/));
+export function parseXY(text) {
+  let lines = text.split('\r?\n').filter((line) => !line.match(/^\s*$/));
   const header = lines[0];
-  lines.splice(0, 1); // header line
+  lines.splice(0, 1); // remove header line
   let data = {
     x: [],
     y: [],
@@ -22,17 +17,17 @@ export function parseXY(file) {
     data.x.push(parseFloat(tmp[0].trim()));
     data.y.push(parseFloat(tmp[1].trim()));
   }
-  let headerlines = header.split('" ');
+  let headerLines = header.split('" ');
 
   // try to make metadata consistent with Bruker
   let meta = {};
-  meta.id = trimReplace(headerlines[0]);
-  meta.comment = trimReplace(headerlines[1]);
-  meta.userName = trimReplace(headerlines[2]);
-  meta.anode = trimReplace(headerlines[3]);
-  meta.scanType = trimReplace(headerlines[4]);
+  meta.id = trimReplace(headerLines[0]);
+  meta.comment = trimReplace(headerLines[1]);
+  meta.userName = trimReplace(headerLines[2]);
+  meta.anode = trimReplace(headerLines[3]);
+  meta.scanType = trimReplace(headerLines[4]);
   // eslint-disable-next-line radix
-  meta.timePerStep = parseInt(trimReplace(headerlines[5]));
+  meta.timePerStep = parseInt(trimReplace(headerLines[5]));
 
   const diffractogram = {
     data: { x: data.x, y: data.y },
@@ -46,4 +41,9 @@ export function parseXY(file) {
   };
 
   return diffractogram;
+}
+
+function trimReplace(s) {
+  let tmp = s.split(':');
+  return tmp[1].replace('"', '').replace("'", '').trim();
 }
