@@ -5,7 +5,7 @@
  * @returns {Object} containing data (x: 2theta, y: counts), info and metadata
  */
 export function parseXY(text) {
-  let lines = text.split('\r?\n').filter((line) => !line.match(/^\s*$/));
+  let lines = text.split(/\r?\n/).filter((line) => !line.match(/^\s*$/));
   const header = lines[0];
   lines.splice(0, 1); // remove header line
   let data = {
@@ -43,7 +43,6 @@ export function parseXY(text) {
   return diffractogram;
 }
 
-function trimReplace(s) {
-  let tmp = s.split(':');
-  return tmp[1].replace('"', '').replace("'", '').trim();
+function trimReplace(string) {
+  return string.split(':')[1].replace('"', '').replace("'", '').trim();
 }
