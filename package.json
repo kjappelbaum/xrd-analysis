@@ -52,7 +52,11 @@
     "rollup": "^2.18.0"
   },
   "dependencies": {
-    "common-spectrum": "0.3.0",
-    "xrd": "0.2.1"
+    "common-spectrum": "^0.3.0",
+    "convert-to-jcamp": "^3.1.1",
+    "fast-xml-parser": "^3.17.4",
+    "jcampconverter": "^7.3.1",
+    "jszip": "^3.5.0",
+    "ml-gsd": "^5.0.1"
   }
 }

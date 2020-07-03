@@ -1,16 +1,15 @@
 import { Analysis } from '..';
 
-import { readBRML } from './parseBRML';
+import { parseXY } from './parseXY';
 
 /**
  * Creates a new Chromatogram element based in a JCAMP string
  * @param {UInt8Array} blob - String containing the JCAMP data
  * @return {Analysis} - New class element with the given data
  */
-export async function fromBRML(blob) {
-  let parsed = await readBRML(blob);
+export function fromXY(blob) {
+  let parsed = parseXY(blob);
   let analysis = new Analysis();
-
   const variables = {
     x: {
       data: parsed.data.x,
@@ -27,5 +26,6 @@ export async function fromBRML(blob) {
     meta: parsed.meta,
     dataType: 'XRD pattern',
   });
+
   return analysis;
 }
