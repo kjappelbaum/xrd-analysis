@@ -8,3 +8,4 @@ export {
 } from 'common-spectrum';
 
 export { fromBRML } from './from/fromBRML';
+export { fromXY } from './from/fromXY';
