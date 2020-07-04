@@ -4,7 +4,7 @@
  * @param {String} [text] Text containing the data
  * @returns {Object} containing data (x: 2theta, y: counts), info and metadata
  */
-export function parseXY(text) {
+export function parsePowDLLXY(text) {
   let lines = text.split(/\r?\n/).filter((line) => !line.match(/^\s*$/));
   const header = lines[0];
   lines.splice(0, 1); // remove header line
