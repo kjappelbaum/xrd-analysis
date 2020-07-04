@@ -1,14 +1,14 @@
 import { Analysis } from '..';
 
-import { parseXY } from './parseXY';
+import { parsePowDLLXY } from './parsePowDLLXY';
 
 /**
  * Creates a new Chromatogram element based in a JCAMP string
  * @param {UInt8Array} blob - String containing the JCAMP data
  * @return {Analysis} - New class element with the given data
  */
-export function fromXY(blob) {
-  let parsed = parseXY(blob);
+export function fromPowDLLXY(blob) {
+  let parsed = parsePowDLLXY(blob);
   let analysis = new Analysis();
   const variables = {
     x: {

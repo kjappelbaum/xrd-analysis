@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-import { fromXY } from '../fromXY';
+import { fromPowDLLXY } from '../fromPowDLLXY';
 
 describe('fromXY', () => {
   const xy = readFileSync(
@@ -10,7 +10,7 @@ describe('fromXY', () => {
   );
 
   it('check the dictionary', () => {
-    const analysis = fromXY(xy);
+    const analysis = fromPowDLLXY(xy);
     let diffractogram = analysis.getSpectrum();
     expect(diffractogram.meta.userName).toBe('Lab Manager');
     expect(diffractogram.variables.x.data[0]).toStrictEqual(10);
