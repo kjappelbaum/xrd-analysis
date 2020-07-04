@@ -57,6 +57,7 @@
     "fast-xml-parser": "^3.17.4",
     "jcampconverter": "^7.3.1",
     "jszip": "^3.5.0",
-    "ml-gsd": "^5.0.1"
+    "ml-gsd": "^5.0.1",
+    "xrd-calculate": "0.0.1"
   }
 }
