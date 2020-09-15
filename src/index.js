@@ -9,3 +9,4 @@ export {
 
 export { fromBRML } from './from/fromBRML';
 export { fromPowDLLXY } from './from/fromPowDLLXY';
+export { predictPattern } from './analysis/predict';
